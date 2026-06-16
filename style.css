@@ -1,0 +1,238 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #0C223E 0%, #1a3a5c 100%);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: white;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+header h1 {
+    color: #FFC74B;
+    font-size: 42px;
+    text-shadow: 0 4px 15px rgba(255, 199, 75, 0.4);
+    margin-bottom: 8px;
+}
+
+.subtitulo {
+    color: #b8c5d6;
+    font-size: 17px;
+    font-style: italic;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.painel-mapa, .painel-passos {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 199, 75, 0.3);
+    border-radius: 20px;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+}
+
+.controles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.modo-peso {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.modo-peso span {
+    color: #FFC74B;
+    font-weight: bold;
+}
+
+.btn-modo {
+    padding: 8px 14px;
+    border: 2px solid #FFC74B;
+    background: transparent;
+    color: #FFC74B;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    font-size: 13px;
+}
+
+.btn-modo:hover {
+    background: rgba(255, 199, 75, 0.15);
+}
+
+.btn-modo.ativo {
+    background: #FFC74B;
+    color: #0C223E;
+}
+
+.instrucao {
+    background: rgba(255, 199, 75, 0.15);
+    padding: 10px 18px;
+    border-radius: 10px;
+    border-left: 4px solid #FFC74B;
+    font-size: 14px;
+}
+
+canvas {
+    background: radial-gradient(ellipse at center, #143055 0%, #0C223E 100%);
+    border: 3px solid #FFC74B;
+    border-radius: 15px;
+    display: block;
+    margin: 15px auto;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    max-width: 100%;
+}
+
+.legenda {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin: 15px 0;
+    font-size: 14px;
+}
+
+.legenda b {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+.bola {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+}
+
+.bola.verde { background: #4CAF50; }
+.bola.vermelha { background: #E53935; }
+.bola.amarela { background: #FFC74B; }
+
+.linha {
+    width: 25px;
+    height: 4px;
+    background: #FFC74B;
+    border-radius: 2px;
+}
+
+.acoes {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.acoes button {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 10px;
+    background: #FFC74B;
+    color: #0C223E;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.acoes button:hover:not(:disabled) {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(255, 199, 75, 0.5);
+}
+
+.acoes button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+#resultado {
+    margin-top: 20px;
+    font-size: 22px;
+    text-align: center;
+    color: #FFC74B;
+    min-height: 30px;
+}
+
+/* Painel lateral */
+.painel-passos h3 {
+    color: #FFC74B;
+    margin-bottom: 15px;
+    border-bottom: 2px solid rgba(255, 199, 75, 0.3);
+    padding-bottom: 10px;
+}
+
+#passos {
+    max-height: 600px;
+    overflow-y: auto;
+    font-size: 14px;
+}
+
+#passos::-webkit-scrollbar { width: 8px; }
+#passos::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 4px; }
+#passos::-webkit-scrollbar-thumb { background: #FFC74B; border-radius: 4px; }
+
+.vazio {
+    color: #8899aa;
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+}
+
+.passo {
+    background: rgba(255, 199, 75, 0.08);
+    border-left: 3px solid #FFC74B;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    animation: aparecer 0.4s ease;
+}
+
+.passo b {
+    color: #FFC74B;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateX(-15px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #b8c5d6;
+    font-size: 14px;
+}
+
+.autor {
+    margin-top: 8px;
+    color: #FFC74B;
+    font-weight: bold;
+}
+
+@media (max-width: 900px) {
+    main { grid-template-columns: 1fr; }
+    header h1 { font-size: 32px; }
+}

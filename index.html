@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Rota Maricá - Caminho Mais Curto com Dijkstra</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🗺️ Rota Maricá</h1>
+        <p class="subtitulo">Encontrando o Caminho Mais Curto com o Algoritmo de Dijkstra</p>
+    </header>
+
+    <main>
+        <section class="painel-mapa">
+            <div class="controles">
+                <div class="modo-peso">
+                    <span>Critério:</span>
+                    <button class="btn-modo ativo" data-modo="distancia">📏 Distância (km)</button>
+                    <button class="btn-modo" data-modo="tempo">⏱️ Tempo (min)</button>
+                    <button class="btn-modo" data-modo="transito">🚦 Trânsito</button>
+                </div>
+                <div class="instrucao" id="instrucao">
+                    👉 Clique em um bairro para definir a <b>ORIGEM</b>
+                </div>
+            </div>
+
+            <canvas id="grafo" width="900" height="550"></canvas>
+
+            <div class="legenda">
+                <span><b class="bola verde"></b> Origem</span>
+                <span><b class="bola vermelha"></b> Destino</span>
+                <span><b class="bola amarela"></b> Caminho</span>
+                <span><b class="linha"></b> Ruas / Conexões</span>
+            </div>
+
+            <div class="acoes">
+                <button id="btnExecutar" disabled>▶️ Executar Dijkstra</button>
+                <button id="btnReset">🔄 Resetar</button>
+            </div>
+
+            <h2 id="resultado">Selecione origem e destino para começar</h2>
+        </section>
+
+        <aside class="painel-passos">
+            <h3>📊 Passo a Passo do Dijkstra</h3>
+            <div id="passos">
+                <p class="vazio">Os passos do algoritmo aparecerão aqui após a execução.</p>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <p>💡 <b>Aplicações reais:</b> Google Maps • Waze • iFood • Uber • Correios • Transporte Público</p>
+        <p class="autor">Desenvolvido por Jorge Miguel de Souza Pereira | Matrícula 202514900</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
